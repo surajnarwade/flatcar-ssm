@@ -1,0 +1,35 @@
+---
+systemd:
+  units:
+  - name: install-ssm.service
+    enabled: true
+    contents: |
+      [Unit]
+      Description=install-ssm
+      After=network.target
+
+      [Service]
+      Type=oneshot
+      ExecStartPre=/usr/bin/git clone https://github.com/surajnarwade/flatcar-ssm /tmp/flatcar-ssm
+      ExecStart=/bin/bash /tmp/flatcar-ssm/install.sh
+      
+      [Install]
+      WantedBy=multi-user.target
+      
+  - name: amazon-ssm-agent.service
+    enabled: true 
+    contents: |
+      [Unit]
+      Description=amazon-ssm-agent
+  
+      [Service]
+      Type=simple
+      WorkingDirectory=/opt/bin/
+      ExecStart=/opt/bin/amazon-ssm-agent
+      KillMode=process
+      Restart=on-failure
+      RestartForceExitStatus=SIGPIPE
+      RestartSec=15min
+  
+      [Install]
+      WantedBy=multi-user.target
