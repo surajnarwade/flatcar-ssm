@@ -28,7 +28,7 @@ resource "aws_instance" "cilium-etcd" {
   user_data = data.ct_config.ignition.rendered
 
 
-  key_name = "test-k8s"
+  key_name = "suraj-keypair"
 
   tags = {
     Name = "test-cilium-etcd"

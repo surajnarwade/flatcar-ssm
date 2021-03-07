@@ -8,7 +8,7 @@ mkdir -p /etc/amazon/ssm
 git clone https://github.com/surajnarwade/flatcar-ssm /tmp/flatcar-ssm
 
 # copy binaries
-cp -rf /tmp/flatcar-ssm/linux_amd64/* /usr/bin
+cp -rf /tmp/flatcar-ssm/bin/linux_amd64/* /usr/bin
 
 # copy amazon ssm agent json
-cp  /tmp/flatcar-ssm/amazon-ssm-agent.json.template /etc/amazon/ssm/amazon-ssm-agent.json
+cp  /tmp/flatcar-ssm/bin/amazon-ssm-agent.json.template /etc/amazon/ssm/amazon-ssm-agent.json
