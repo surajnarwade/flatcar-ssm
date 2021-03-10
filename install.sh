@@ -12,3 +12,6 @@ cp -rf /tmp/flatcar-ssm/bin/linux_amd64/* /opt/bin
 
 # copy amazon ssm agent json
 cp  /tmp/flatcar-ssm/bin/amazon-ssm-agent.json.template /etc/amazon/ssm/amazon-ssm-agent.json
+
+# Restart the ssm service
+sudo systemctl restart amazon-ssm-agent.service
